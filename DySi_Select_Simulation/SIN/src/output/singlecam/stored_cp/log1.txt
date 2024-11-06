@@ -1,0 +1,408 @@
+PS E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src> & C:/Users/aksha/anaconda3/envs/cam2bev_sin/python.exe e:/Sem4-SoSe2023/MasterThesis/04_Prototype/DySi_Select/SIN/src/train_model.py -c config.SingleCam.PredictSIN.yml
+2023-07-22 12:56:44.253336: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2023-07-22 12:56:44.253780: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2023-07-22 12:57:03.321546: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library nvcuda.dll
+2023-07-22 12:57:03.489725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2023-07-22 12:57:03.491292: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2023-07-22 12:57:03.492596: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublas64_11.dll'; dlerror: cublas64_11.dll not found
+2023-07-22 12:57:03.493843: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublasLt64_11.dll'; dlerror: cublasLt64_11.dll not found
+2023-07-22 12:57:03.494962: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cufft64_10.dll'; dlerror: cufft64_10.dll not found
+2023-07-22 12:57:03.495937: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'curand64_10.dll'; dlerror: curand64_10.dll not found
+2023-07-22 12:57:03.497095: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusolver64_11.dll'; dlerror: cusolver64_11.dll not found
+2023-07-22 12:57:03.498907: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusparse64_11.dll'; dlerror: cusparse64_11.dll not found
+2023-07-22 12:57:03.500361: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2023-07-22 12:57:03.500687: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1766] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+Loaded python module: vggnet.py
+File Directory being loaded: E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src\data\SIN\SingleCam\training
+Found 2500 images belonging to 5 classes.
+Training data pipeline with samples: 2500
+Classes in the training dir: {'FreeDrive': 0, 'FreeDriveParkedVehicles': 1, 'FreeIntersection': 2, 'OccludedDrive': 3, 'OccludedIntersection': 4}
+File Directory being loaded: E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src\data\SIN\SingleCam\validation       
+Found 250 images belonging to 5 classes.
+Validation data pipeline with samples: 250
+Classes in the validation dir: {'FreeDrive': 0, 'FreeDriveParkedVehicles': 1, 'FreeIntersection': 2, 'OccludedDrive': 3, 'OccludedIntersection': 4}
+using pre-trained vggnet backbone with modified top layers.....
+2023-07-22 12:57:03.959775: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2       
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-07-22 12:57:03.960616: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-07-22 12:57:03.960931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 224, 224, 3)]     0
+_________________________________________________________________
+block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
+_________________________________________________________________
+block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
+_________________________________________________________________
+block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
+_________________________________________________________________
+block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
+_________________________________________________________________
+block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
+_________________________________________________________________
+block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
+_________________________________________________________________
+block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
+_________________________________________________________________
+block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
+_________________________________________________________________
+block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
+_________________________________________________________________
+block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
+_________________________________________________________________
+block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
+_________________________________________________________________
+flatten (Flatten)            (None, 25088)             0
+_________________________________________________________________
+dense (Dense)                (None, 1024)              25691136
+_________________________________________________________________
+dropout (Dropout)            (None, 1024)              0
+_________________________________________________________________
+dense_1 (Dense)              (None, 5)                 5125
+=================================================================
+Total params: 40,410,949
+Trainable params: 32,775,685
+Non-trainable params: 7,635,264
+_________________________________________________________________
+Compiled model vggnet.py
+Starting Training now...
+2023-07-22 12:57:11.603689: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+166/166 [==============================] - 595s 4s/step - loss: 0.5255 - accuracy: 0.8306 - precision: 0.8645 - recall: 0.8008 - val_loss: 0.6821 - val_accuracy: 0.8083 - val_precision: 0.8400 - val_recall: 0.7875
+Epoch 3/25
+166/166 [==============================] - 594s 4s/step - loss: 0.4121 - accuracy: 0.8692 - precision: 0.8834 - recall: 0.8535 - val_loss: 0.4684 - val_accuracy: 0.8375 - val_precision: 0.8596 - val_recall: 0.8167
+Epoch 4/25
+166/166 [==============================] - 645s 4s/step - loss: 0.3038 - accuracy: 0.9030 - precision: 0.9113 - recall: 0.8926 - val_loss: 0.4242 - val_accuracy: 0.8958 - val_precision: 0.9095 - val_recall: 0.8792
+Epoch 5/25
+166/166 [==============================] - 689s 4s/step - loss: 0.2005 - accuracy: 0.9344 - precision: 0.9400 - recall: 0.9276 - val_loss: 0.5373 - val_accuracy: 0.8750 - val_precision: 0.8970 - val_recall: 0.8708
+Epoch 6/25
+166/166 [==============================] - 718s 4s/step - loss: 0.2171 - accuracy: 0.9348 - precision: 0.9381 - recall: 0.9324 - val_loss: 0.4589 - val_accuracy: 0.8958 - val_precision: 0.9034 - val_recall: 0.8958
+Epoch 7/25
+166/166 [==============================] - 665s 4s/step - loss: 0.1601 - accuracy: 0.9509 - precision: 0.9546 - recall: 0.9485 - val_loss: 0.4411 - val_accuracy: 0.8750 - val_precision: 0.8750 - val_recall: 0.8750
+Epoch 8/25
+166/166 [==============================] - 641s 4s/step - loss: 0.1418 - accuracy: 0.9577 - precision: 0.9599 - recall: 0.9541 - val_loss: 0.4621 - val_accuracy: 0.9083 - val_precision: 0.9079 - val_recall: 0.9042
+Epoch 9/25
+166/166 [==============================] - 668s 4s/step - loss: 0.1186 - accuracy: 0.9630 - precision: 0.9645 - recall: 0.9626 - val_loss: 0.5235 - val_accuracy: 0.8583 - val_precision: 0.8613 - val_recall: 0.8542
+Epoch 10/25
+166/166 [==============================] - 671s 4s/step - loss: 0.0922 - accuracy: 0.9722 - precision: 0.9730 - recall: 0.9714 - val_loss: 0.6268 - val_accuracy: 0.8542 - val_precision: 0.8608 - val_recall: 0.8500
+Epoch 11/25
+166/166 [==============================] - 668s 4s/step - loss: 0.0868 - accuracy: 0.9726 - precision: 0.9730 - recall: 0.9710 - val_loss: 0.7610 - val_accuracy: 0.8667 - val_precision: 0.8661 - val_recall: 0.8625
+Epoch 12/25
+166/166 [==============================] - 666s 4s/step - loss: 0.0936 - accuracy: 0.9690 - precision: 0.9709 - recall: 0.9682 - val_loss: 0.3621 - val_accuracy: 0.9083 - val_precision: 0.9118 - val_recall: 0.9042
+Epoch 13/25
+166/166 [==============================] - 662s 4s/step - loss: 0.0674 - accuracy: 0.9795 - precision: 0.9799 - recall: 0.9791 - val_loss: 0.3993 - val_accuracy: 0.9083 - val_precision: 0.9079 - val_recall: 0.9042
+Epoch 15/25
+166/166 [==============================] - 710s 4s/step - loss: 0.0499 - accuracy: 0.9855 - precision: 0.9859 - recall: 0.9847 - val_loss: 0.5992 - val_accuracy: 0.9083 - val_precision: 0.9118 - val_recall: 0.9042
+Epoch 00015: early stopping
+Finished training.
+2023-07-22 15:41:46.111105: W tensorflow/core/kernels/data/generator_dataset_op.cc:107] Error occurred when finalizing GeneratorDataset iterator: Failed precondition: Python interpreter state is not initialized. The process may be terminated.
+         [[{{node PyFunc}}]]
+		 
+		 
+
+PS E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src> & C:/Users/aksha/anaconda3/envs/cam2bev_sin/python.exe e:/Sem4-SoSe2023/MasterThesis/04_Prototype/DySi_Select/SIN/src/evaluate_model.py -c config.SingleCam.PredictSIN.yml
+2023-07-24 11:45:49.095016: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2023-07-24 11:45:49.095455: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Loaded python module: vggnet.py
+File Directory being loaded: E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src\data\SIN\SingleCam\testing
+Found 100 images belonging to 5 classes.
+Testing pipeline with samples: 100
+Classes in the test_data dir: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4]
+using pre-trained vggnet backbone with modified top layers.....
+2023-07-24 11:45:52.844086: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library nvcuda.dll
+2023-07-24 11:45:52.868419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2023-07-24 11:45:52.871427: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2023-07-24 11:45:52.873371: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublas64_11.dll'; dlerror: cublas64_11.dll not found
+2023-07-24 11:45:52.875440: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublasLt64_11.dll'; dlerror: cublasLt64_11.dll not found
+2023-07-24 11:45:52.876569: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cufft64_10.dll'; dlerror: cufft64_10.dll not found
+2023-07-24 11:45:52.877817: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'curand64_10.dll'; dlerror: curand64_10.dll not found
+2023-07-24 11:45:52.879427: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusolver64_11.dll'; dlerror: cusolver64_11.dll not found
+2023-07-24 11:45:52.880823: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusparse64_11.dll'; dlerror: cusparse64_11.dll not found
+2023-07-24 11:45:52.881972: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2023-07-24 11:45:52.882328: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1766] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2023-07-24 11:45:52.883128: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-07-24 11:45:52.884061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-07-24 11:45:52.884400: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 224, 224, 3)]     0
+_________________________________________________________________
+block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
+_________________________________________________________________
+block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
+_________________________________________________________________
+block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
+_________________________________________________________________
+block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
+_________________________________________________________________
+block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
+_________________________________________________________________
+block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
+_________________________________________________________________
+block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
+_________________________________________________________________
+block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
+_________________________________________________________________
+block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
+_________________________________________________________________
+block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
+_________________________________________________________________
+block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
+_________________________________________________________________
+flatten (Flatten)            (None, 25088)             0
+_________________________________________________________________
+dense (Dense)                (None, 1024)              25691136
+_________________________________________________________________
+dropout (Dropout)            (None, 1024)              0
+_________________________________________________________________
+dense_1 (Dense)              (None, 5)                 5125
+=================================================================
+Total params: 40,410,949
+Trainable params: 32,775,685
+Non-trainable params: 7,635,264
+_________________________________________________________________
+Reloaded model from E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src\output\2023-07-22-12-57-07\Checkpoints\best_weights.hdf5
+2023-07-24 11:45:54.197285: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+Classes predicted: [0 3 0 0 0 0 0 0 0 0 1 0 0 0 3 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 2 2 2 2 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ 3 3 3 3 3 3 4 4 4 4 4 4 4 3 4 2 4 4 4 4 4 4 3 4 4 4]
+Evaluating Confusion Matrix....
+Overall Statistics :
+
+ACC Macro                                                         0.972
+F1 Macro                                                          0.92967
+FPR Macro                                                         0.0175
+Kappa                                                             0.9125
+NPV Macro                                                         0.98295
+Overall ACC                                                       0.93
+PPV Macro                                                         0.93603
+SOA1(Landis & Koch)                                               Almost Perfect
+TPR Macro                                                         0.93
+Zero-one Loss                                                     7
+
+Class Statistics :
+
+Classes                                                           0             1             2             3             4        
+
+ACC(Accuracy)                                                     0.96          0.99          0.98          0.96          0.97     
+
+AUC(Area under the ROC curve)                                     0.91875       0.99375       0.96875       0.975         0.925    
+
+AUCI(AUC value interpretation)                                    Excellent     Excellent     Excellent     Excellent     Excellent
+
+F1(F1 score - harmonic mean of precision and sensitivity)         0.89474       0.97561       0.95          0.90909       0.91892  
+
+FN(False negative/miss/type 2 error)                              3             0             1             0             3        
+
+FP(False positive/type 1 error/false alarm)                       1             1             1             4             0        
+
+FPR(Fall-out or false positive rate)                              0.0125        0.0125        0.0125        0.05          0.0      
+
+N(Condition negative)                                             80            80            80            80            80       
+
+P(Condition positive or support)                                  20            20            20            20            20       
+
+POP(Population)                                                   100           100           100           100           100      
+
+PPV(Precision or positive predictive value)                       0.94444       0.95238       0.95          0.83333       1.0      
+
+TN(True negative/correct rejection)                               79            79            79            76            80       
+
+TON(Test outcome negative)                                        82            79            80            76            83       
+
+TOP(Test outcome positive)                                        18            21            20            24            17       
+
+TP(True positive/hit)                                             17            20            19            20            17       
+
+TPR(Sensitivity, recall, hit rate, or true positive rate)         0.85          1.0           0.95          1.0           0.85     
+
+
+Generated Confusion Matrix and related metrics.
+
+
+
+& C:/Users/aksha/anaconda3/envs/cam2bev_sin/python.exe e:/Sem4-SoSe2023/MasterThesis/04_Prototype/DySi_Select/SIN/src/evaluate_model.py -c config.SingleCam.PredictSIN.yml 
+2023-07-24 11:53:43.801108: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2023-07-24 11:53:43.801208: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Loaded python module: vggnet.py
+File Directory being loaded: E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src\data\SIN\SingleCam\testing       
+Found 200 images belonging to 5 classes.
+Testing pipeline with samples: 200
+Classes in the test_data dir: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ 3 3 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+ 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4]
+using pre-trained vggnet backbone with modified top layers.....
+2023-07-24 11:53:47.232831: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library nvcuda.dll
+2023-07-24 11:53:47.264752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2023-07-24 11:53:47.267088: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2023-07-24 11:53:47.268252: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublas64_11.dll'; dlerror: cublas64_11.dll not found
+2023-07-24 11:53:47.269502: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublasLt64_11.dll'; dlerror: cublasLt64_11.dll not found
+2023-07-24 11:53:47.270586: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cufft64_10.dll'; dlerror: cufft64_10.dll not found
+2023-07-24 11:53:47.271729: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'curand64_10.dll'; dlerror: curand64_10.dll not found
+2023-07-24 11:53:47.273525: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusolver64_11.dll'; dlerror: cusolver64_11.dll not found
+2023-07-24 11:53:47.274954: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusparse64_11.dll'; dlerror: cusparse64_11.dll not found
+2023-07-24 11:53:47.276024: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2023-07-24 11:53:47.276333: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1766] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2023-07-24 11:53:47.276993: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2 
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-07-24 11:53:47.278043: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-07-24 11:53:47.278321: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]
+Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 224, 224, 3)]     0
+_________________________________________________________________
+block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792
+_________________________________________________________________
+block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928
+_________________________________________________________________
+block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0
+_________________________________________________________________
+block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856
+_________________________________________________________________
+block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584
+_________________________________________________________________
+block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0
+_________________________________________________________________
+block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168
+_________________________________________________________________
+block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080
+_________________________________________________________________
+block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0
+_________________________________________________________________
+block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160
+_________________________________________________________________
+block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808
+_________________________________________________________________
+block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0
+_________________________________________________________________
+block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808
+_________________________________________________________________
+block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0
+_________________________________________________________________
+flatten (Flatten)            (None, 25088)             0
+_________________________________________________________________
+dense (Dense)                (None, 1024)              25691136
+_________________________________________________________________
+dropout (Dropout)            (None, 1024)              0
+_________________________________________________________________
+dense_1 (Dense)              (None, 5)                 5125
+=================================================================
+Total params: 40,410,949
+Trainable params: 32,775,685
+Non-trainable params: 7,635,264
+_________________________________________________________________
+Reloaded model from E:\Sem4-SoSe2023\MasterThesis\04_Prototype\DySi_Select\SIN\src\output\2023-07-22-12-57-07\Checkpoints\best_weights.hdf5
+2023-07-24 11:53:48.622490: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2023-07-24 11:53:48.985945: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 192675840 exceeds 10% of free system memory.
+2023-07-24 11:53:49.063264: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 192675840 exceeds 10% of free system memory.
+2023-07-24 11:53:52.006326: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 192675840 exceeds 10% of free system memory.
+2023-07-24 11:53:52.046585: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 192675840 exceeds 10% of free system memory.
+2023-07-24 11:53:53.959774: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 192675840 exceeds 10% of free system memory.
+Classes predicted: [0 3 0 0 0 0 0 0 0 0 1 0 0 0 3 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 1 0 0
+ 3 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 3 1 2 2 2 2 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 4 2 2 2 2 2 2 2 4
+ 4 4 2 2 2 4 4 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 3 0 3 3 3 3
+ 3 3 3 3 4 3 3 3 3 3 3 3 4 4 4 4 4 4 4 3 4 2 4 4 4 4 4 4 3 4 4 4 4 4 4 4 4
+ 4 4 4 4 4 4 4 4 4 4 4 3 4 4 4]
+Evaluating Confusion Matrix....
+Overall Statistics :
+
+ACC Macro                                                         0.95
+F1 Macro                                                          0.87507
+FPR Macro                                                         0.03125
+Kappa                                                             0.84375
+NPV Macro                                                         0.96902
+Overall ACC                                                       0.875
+PPV Macro                                                         0.88029
+SOA1(Landis & Koch)                                               Almost Perfect
+TPR Macro                                                         0.875
+Zero-one Loss                                                     25
+
+Class Statistics :
+
+Classes                                                           0             1             2             3             4  
+
+ACC(Accuracy)                                                     0.94          0.97          0.96          0.935         0.945
+AUC(Area under the ROC curve)                                     0.8875        0.9625        0.90938       0.92188       0.92813
+AUCI(AUC value interpretation)                                    Very Good     Excellent     Excellent     Excellent     Excellent
+F1(F1 score - harmonic mean of precision and sensitivity)         0.84211       0.92683       0.89189       0.84706       0.86747
+FN(False negative/miss/type 2 error)                              8             2             7             4             4  
+
+FP(False positive/type 1 error/false alarm)                       4             4             1             9             7  
+
+FPR(Fall-out or false positive rate)                              0.025         0.025         0.00625       0.05625       0.04375
+N(Condition negative)                                             160           160           160           160           160
+
+P(Condition positive or support)                                  40            40            40            40            40 
+
+POP(Population)                                                   200           200           200           200           200
+
+PPV(Precision or positive predictive value)                       0.88889       0.90476       0.97059       0.8           0.83721
+TN(True negative/correct rejection)                               156           156           159           151           153
+
+TON(Test outcome negative)                                        164           158           166           155           157
+
+TOP(Test outcome positive)                                        36            42            34            45            43 
+
+TP(True positive/hit)                                             32            38            33            36            36 
+
+TPR(Sensitivity, recall, hit rate, or true positive rate)         0.8           0.95          0.825         0.9           0.9
+
+
+Generated Confusion Matrix and related metrics.

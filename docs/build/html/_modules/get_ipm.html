@@ -1,0 +1,501 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>get_ipm - DySi_Select 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">DySi_Select 0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">DySi_Select 0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">DySi_Select_Simulation Software</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../DySi_Sel_Traffic_v01.html">DySi_Sel_Traffic_v01 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DySi_Sel_utils.html">DySi_Sel_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DySi_Sel_v01.html">DySi_Sel_v01 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DySi_Select_Parking_v01.html">DySi_Select_Parking_v01 module</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../SIN.html">SIN package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../SIN.src.html">SIN.src package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../SIN.src.features.html">SIN.src.features package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../SIN.src.utils.html">SIN.src.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../SemSeg.html">SemSeg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../evaluate_real_dataset.html">evaluate_real_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../playground_bev.html">playground_bev module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../playground_sem.html">playground_sem module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../playground_sin.html">playground_sin module</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Cam2BEV.html">Cam2BEV</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deeplab_mobilenet.html">deeplab_mobilenet module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deeplab_xception.html">deeplab_xception module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uNetXST.html">uNetXST module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../predict_bev.html">predict_bev module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../utils.html">utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../get_ipm.html">get_ipm module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../predict.html">predict module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../train.html">train module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../trial_ipm.html">trial_ipm module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evaluate.html">evaluate module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for get_ipm</h1><div class="highlight"><pre>
+<span></span><span class="c1"># ==============================================================================</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright 2023 IAS, Uni Stuttgart</span>
+<span class="c1">#</span>
+<span class="c1"># get_ipm python module is used to convert the  semantic segmented image to </span>
+<span class="c1"># a BEV homography image. This is necessary if the Cam2BEV is based on </span>
+<span class="c1"># DeepLab-Mobilenet</span>
+<span class="c1"># ==============================================================================</span>
+
+<span class="sd">&quot;&quot;&quot;get_ipm python module is used to convert the semantic segmented image to </span>
+<span class="sd">a BEV homography image. This is necessary if the Cam2BEV is based on DeepLab-Mobilenet </span>
+<span class="sd">network backbone</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<div class="viewcode-block" id="Camera"><a class="viewcode-back" href="../get_ipm.html#get_ipm.Camera">[docs]</a><span class="k">class</span> <span class="nc">Camera</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot; Camera class instantiates a camera based on the parsed configuration.</span>
+<span class="sd">  </span>
+<span class="sd">  Camera class is used to set the intrinsic and extrinsic parameters</span>
+<span class="sd">  for the cameras involved.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<div class="viewcode-block" id="Camera.setK"><a class="viewcode-back" href="../get_ipm.html#get_ipm.Camera.setK">[docs]</a>  <span class="k">def</span> <span class="nf">setK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">fx</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">fy</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">px</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">py</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span></div>
+
+<div class="viewcode-block" id="Camera.setR"><a class="viewcode-back" href="../get_ipm.html#get_ipm.Camera.setR">[docs]</a>  <span class="k">def</span> <span class="nf">setR</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+
+    <span class="n">Rz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">Ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">)],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">)]])</span>
+    <span class="n">Rx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">)],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">)]])</span>
+    <span class="n">Rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span> <span class="c1"># switch axes (x = -y, y = -z, z = x)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">Rs</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Rz</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ry</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Rx</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="Camera.setT"><a class="viewcode-back" href="../get_ipm.html#get_ipm.Camera.setT">[docs]</a>  <span class="k">def</span> <span class="nf">setT</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">XCam</span><span class="p">,</span> <span class="n">YCam</span><span class="p">,</span> <span class="n">ZCam</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">XCam</span><span class="p">,</span> <span class="n">YCam</span><span class="p">,</span> <span class="n">ZCam</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Camera.updateP"><a class="viewcode-back" href="../get_ipm.html#get_ipm.Camera.updateP">[docs]</a>  <span class="k">def</span> <span class="nf">updateP</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">Rt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+    <span class="n">Rt</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span>
+    <span class="n">Rt</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Rt</span><span class="p">)</span></div>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setK</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;fx&quot;</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;fy&quot;</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;px&quot;</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;py&quot;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setR</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;yaw&quot;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;pitch&quot;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;roll&quot;</span><span class="p">]))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setT</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;XCam&quot;</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;YCam&quot;</span><span class="p">],</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;ZCam&quot;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">updateP</span><span class="p">()</span></div>
+    
+ 
+<div class="viewcode-block" id="get_homography"><a class="viewcode-back" href="../get_ipm.html#get_ipm.get_homography">[docs]</a><span class="k">def</span> <span class="nf">get_homography</span><span class="p">(</span><span class="n">semntc_img</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Interface for getting homography image for the input semantically segmented image.</span>
+<span class="sd">  This is suitable currently for one camera only(i.e. Front).</span>
+<span class="sd">  For adapting to multiple cameras, refer ipm.py and make changes.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      semntc_img (str): the semantic segmented image to be transformed</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      str: the homography image for DeepLab-Cam2BEV</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># load camera configurations and drone config for BEV transformation</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;Cam2BEV/preprocessing/camera_configs/2_F/front.yaml&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="n">cameraConfig</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;Cam2BEV/preprocessing/camera_configs/2_F/drone.yaml&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="n">droneConfig</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+    
+  <span class="c1"># read the semantically segmented image</span>
+  <span class="nb">input</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">semntc_img</span><span class="p">)</span>
+  
+  <span class="c1"># init camera objects</span>
+  <span class="n">cam</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">cameraConfig</span><span class="p">)</span>
+  <span class="n">drone</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">droneConfig</span><span class="p">)</span>
+    
+  <span class="c1"># calculate output shape; adjust to match drone image</span>
+  <span class="n">outputRes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;py&quot;</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;px&quot;</span><span class="p">]))</span>
+  <span class="n">dx</span> <span class="o">=</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;fx&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;ZCam&quot;</span><span class="p">]</span>
+  <span class="n">dy</span> <span class="o">=</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;fy&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;ZCam&quot;</span><span class="p">]</span>
+  <span class="n">pxPerM</span> <span class="o">=</span> <span class="p">(</span><span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">dy</span><span class="p">,</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">dx</span><span class="p">)</span>
+
+  <span class="c1"># setup mapping from street/top-image plane to world coords</span>
+  <span class="n">shift</span> <span class="o">=</span> <span class="p">(</span><span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+  <span class="n">shift</span> <span class="o">=</span> <span class="n">shift</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;YCam&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shift</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;XCam&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">shift</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shift</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+  <span class="n">IPM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cam</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">))</span>
+    
+  <span class="c1"># print(f&quot;OpenCV homography for front camera:&quot;)</span>
+  <span class="c1"># print(IPM.tolist())</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculating new homography for the parsed image resolution....&quot;</span><span class="p">)</span>
+  <span class="n">newIPM</span><span class="p">,</span> <span class="n">outputRes</span> <span class="o">=</span> <span class="n">homography_conv</span><span class="p">(</span><span class="n">IPM</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  
+  <span class="c1"># print(newIPM.tolist())</span>
+    
+  <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+      <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="o">-</span><span class="n">j</span> <span class="o">+</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;YCam&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span> <span class="o">-</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">droneConfig</span><span class="p">[</span><span class="s2">&quot;XCam&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">pxPerM</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+      <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">cameraConfig</span><span class="p">[</span><span class="s2">&quot;yaw&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">cameraConfig</span><span class="p">[</span><span class="s2">&quot;yaw&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">270</span><span class="p">:</span>
+        <span class="n">mask</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+  <span class="n">interpMode</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span>
+  <span class="n">warpedImage</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpPerspective</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">newIPM</span><span class="p">,</span> <span class="p">(</span><span class="n">outputRes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">outputRes</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">flags</span><span class="o">=</span><span class="n">interpMode</span><span class="p">)</span>
+  
+  <span class="n">birdsEyeView</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">warpedImage</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+  <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">warpedImage</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">birdsEyeView</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">warpedImage</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    
+  <span class="n">outputDir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;Cam2BEV/homography_output&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">outputDir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outputDir</span><span class="p">)</span>
+  <span class="n">op_loc</span> <span class="o">=</span> <span class="n">save_ipm_eval</span><span class="p">(</span><span class="n">outputDir</span><span class="p">)</span>
+  <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">op_loc</span><span class="p">,</span> <span class="n">birdsEyeView</span><span class="p">)</span>
+    
+  <span class="k">return</span> <span class="n">op_loc</span></div>
+  
+
+<div class="viewcode-block" id="save_ipm_eval"><a class="viewcode-back" href="../get_ipm.html#get_ipm.save_ipm_eval">[docs]</a><span class="k">def</span> <span class="nf">save_ipm_eval</span><span class="p">(</span><span class="n">outputDir</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Interface for saving the images for further processing and evaluation.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      outputDir (str): output directory where the images are to be saved</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      str: name of the file to be stored appended to the parsed directory</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Get the current date</span>
+  <span class="n">current_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="c1"># Create the date-based folder</span>
+  <span class="n">date_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outputDir</span><span class="p">,</span> <span class="n">current_date</span><span class="p">)</span>
+  <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">date_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="c1"># Find the highest existing file number within the run folder</span>
+  <span class="n">existing_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">date_folder</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;IPMLog-&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">)]</span>
+  <span class="n">existing_file_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="p">]</span>
+  <span class="n">highest_file_number</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">existing_file_numbers</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="c1"># Generate the new file number</span>
+  <span class="n">new_file_number</span> <span class="o">=</span> <span class="n">highest_file_number</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">new_file_number_padded</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_file_number</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+  <span class="c1"># Create the filename</span>
+  <span class="n">file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;IPMLog-</span><span class="si">{</span><span class="n">new_file_number_padded</span><span class="si">}</span><span class="s2">.png&quot;</span>
+
+  <span class="c1"># Create the full file path within the new run folder</span>
+  <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">date_folder</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">file_path</span></div>
+
+
+<div class="viewcode-block" id="homography_conv"><a class="viewcode-back" href="../get_ipm.html#get_ipm.homography_conv">[docs]</a><span class="k">def</span> <span class="nf">homography_conv</span><span class="p">(</span><span class="n">oldIPM</span><span class="p">,</span> <span class="n">imgShape</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Interface for converting the IPM homography to handle resolutions other than Cam2BEV dataset resolution.</span>
+<span class="sd">  </span>
+<span class="sd">  Cam2BEV dataset resolution: 1936x1216 --&gt; 1936x968 (WxH format like in files)</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      oldIPM (array): old homogrpahy matrix (based on the Cam2BEV data configuration)</span>
+<span class="sd">      imgShape (array): shape of the parsed input image</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      array: new homography matrix</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">oldInputResolution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1216</span><span class="p">,</span><span class="mi">1936</span><span class="p">]</span>
+  <span class="n">oldOutputResolution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">968</span><span class="p">,</span><span class="mi">1936</span><span class="p">]</span>
+  <span class="n">newInputResolution</span> <span class="o">=</span> <span class="n">imgShape</span>
+  <span class="n">newOutputResolution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">256</span><span class="p">,</span><span class="mi">512</span><span class="p">]</span>
+
+  <span class="c1"># read original homography</span>
+  <span class="n">cvH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">oldIPM</span><span class="p">)</span>
+
+  <span class="c1"># calculate intermediate shapes</span>
+  <span class="n">newInputAspectRatio</span> <span class="o">=</span> <span class="n">newInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">newInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">newOutputAspectRatio</span> <span class="o">=</span> <span class="n">newOutputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">newOutputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">isNewInputWide</span> <span class="o">=</span> <span class="n">newInputAspectRatio</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+  <span class="n">isNewOutputWide</span> <span class="o">=</span> <span class="n">newOutputAspectRatio</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+  <span class="k">if</span> <span class="n">isNewInputWide</span><span class="p">:</span>
+      <span class="n">newInputResolutionAtOldInputAspectRatio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">newInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">oldInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">oldInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">newInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">newInputResolutionAtOldInputAspectRatio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">newInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">newInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">oldInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">oldInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+  <span class="k">if</span> <span class="n">isNewOutputWide</span><span class="p">:</span>
+      <span class="n">oldOutputResolutionAtNewOutputAspectRatio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">newOutputAspectRatio</span> <span class="o">*</span> <span class="n">oldOutputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">oldOutputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">oldOutputResolutionAtNewOutputAspectRatio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">oldOutputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oldOutputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">newOutputAspectRatio</span><span class="p">))</span>
+
+  <span class="c1">#=== introduce additional transformation matrices to correct for different aspect ratio</span>
+
+  <span class="c1"># shift input to simulate padding to original aspect ratio</span>
+  <span class="n">px</span> <span class="o">=</span> <span class="p">(</span><span class="n">newInputResolutionAtOldInputAspectRatio</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">newInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">isNewInputWide</span> <span class="k">else</span> <span class="mi">0</span>
+  <span class="n">py</span> <span class="o">=</span> <span class="p">(</span><span class="n">newInputResolutionAtOldInputAspectRatio</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">newInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">isNewInputWide</span> <span class="k">else</span> <span class="mi">0</span>
+  <span class="n">Ti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="n">px</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+  <span class="c1"># scale input to original resolution</span>
+  <span class="n">fx</span> <span class="o">=</span> <span class="n">oldInputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">newInputResolutionAtOldInputAspectRatio</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">fy</span> <span class="o">=</span> <span class="n">oldInputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">newInputResolutionAtOldInputAspectRatio</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">Ki</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">fx</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+  <span class="c1"># crop away part of size &#39;oldOutputResolutionAtNewOutputAspectRatio&#39; from original output resolution</span>
+  <span class="n">px</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">oldOutputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">oldOutputResolutionAtNewOutputAspectRatio</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+  <span class="n">py</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">oldOutputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">oldOutputResolutionAtNewOutputAspectRatio</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+  <span class="n">To</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="n">px</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">py</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+  <span class="c1"># scale output to new resolution</span>
+  <span class="n">fx</span> <span class="o">=</span> <span class="n">newOutputResolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">oldOutputResolutionAtNewOutputAspectRatio</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">fy</span> <span class="o">=</span> <span class="n">newOutputResolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">oldOutputResolutionAtNewOutputAspectRatio</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">Ko</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">fx</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+  <span class="c1"># assemble adjusted homography</span>
+  <span class="n">cvHr</span> <span class="o">=</span> <span class="n">Ko</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">To</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cvH</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ki</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ti</span><span class="p">))))</span>
+  <span class="k">return</span> <span class="n">cvHr</span><span class="p">,</span> <span class="n">newOutputResolution</span></div>
+  
+  
+ 
+  
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Akshay Narla, IAS
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+# ==============================================================================
+#
+# Copyright 2023 IAS, Uni Stuttgart
+#
+# This MultiCam config module is used for loading the necessary 
+# configuration or parameters for the training and evaluation of
+# of multi camera variant of SIN.
+# ==============================================================================
+input-training: ../src/data/SIN/MultiCam/training
+input-validation: ../src/data/SIN/MultiCam/validation
+
+arch: vggnet
+model: models/arch/vggnet.py
+epochs: 25
+batch-size: 15
+learning-rate: 1e-4
+early-stopping-patience: 7
+fine_tune: 4
+dropout: 0.2
+
+save-interval: 5
+output-dir: output/multicam
+
+# for training continuation, evaluation and prediction only
+n_class: 5
+class-names: [FreeDrive, FreeDriveParkedVehicles, FreeIntersection, OccludedDrive, OccludedIntersection]
+# model-weights: 
+
+# for predict_model.py only
+input-testing: ../src/data/SIN/MultiCam/testing
